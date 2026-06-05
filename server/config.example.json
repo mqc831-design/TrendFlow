@@ -1,0 +1,13 @@
+{
+  "keywords": [],
+  "matchMode": "any",
+  "sources": {
+    "weibo": true,
+    "zhihu": true,
+    "bilibili": true
+  },
+  "topN": 20,
+  "refreshMode": "both",
+  "scheduledTime": "08:00",
+  "cacheTTL": 600
+}

@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.snapshots/
+.claude/
+
+# tsc 编译产物（源码旁边生成的 .js）
+client/src/**/*.js
+shared/*.js
+
+# 个人配置文件（请复制 .example 文件后编辑）
+server/config.json
+
+# 个人工作草稿（不提交）
+（示例）*
+执行提示词整理.md

@@ -1,0 +1,68 @@
+.keyword-fieldset {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.keyword-fieldset legend {
+  font-weight: 600;
+  color: #333;
+}
+
+.keyword-input {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.keyword-input input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.keyword-input button {
+  padding: 8px 16px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.keyword-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.keyword-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: #e8eaf6;
+  border-radius: 16px;
+  font-size: 13px;
+  color: #3949ab;
+}
+
+.keyword-tag button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #7986cb;
+  padding: 0 2px;
+  line-height: 1;
+}
+
+.hint {
+  color: #999;
+  font-size: 13px;
+  margin: 8px 0 0;
+}
