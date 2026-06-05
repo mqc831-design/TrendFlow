@@ -74,6 +74,21 @@ a {
   cursor: not-allowed;
 }
 
+.config-link {
+  padding: 8px 16px;
+  background: #f0f0f0;
+  color: #666;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.config-link:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
 /* LoadingState */
 .loading-state {
   display: flex;

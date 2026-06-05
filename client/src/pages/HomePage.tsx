@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { useHotLists } from '../hooks/useHotLists';
 import { useRefresh } from '../hooks/useRefresh';
 import { usePlatformRefresh } from '../hooks/usePlatformRefresh';
@@ -32,7 +33,10 @@ function HomePage() {
     <div className="home-page">
       <div className="home-page__toolbar">
         <span>最后更新：{new Date(data.updatedAt).toLocaleString('zh-CN')}</span>
-        <RefreshButton onClick={refresh} loading={refreshing} />
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          <Link to="/config" className="config-link">⚙ 配置</Link>
+          <RefreshButton onClick={refresh} loading={refreshing} />
+        </div>
       </div>
 
       <div className="home-page__grid">
