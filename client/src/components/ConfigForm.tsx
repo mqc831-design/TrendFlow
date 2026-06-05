@@ -4,12 +4,15 @@ import { KeywordManager } from './KeywordManager';
 import type { AppConfig } from '@shared/types';
 import styles from './ConfigForm.module.css';
 
+const isProd = import.meta.env.PROD;
+
 function ConfigForm() {
   const { config, updateConfig, loading } = useConfigContext();
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
   const handleSave = async (partial: Partial<AppConfig>) => {
+    if (isProd) return;
     setSaving(true);
     setMessage(null);
     try {
@@ -26,9 +29,16 @@ function ConfigForm() {
     <form className={styles['config-form']} onSubmit={(e) => e.preventDefault()}>
       <h2>配置</h2>
 
+      {isProd && (
+        <div className={styles['config-form__banner']}>
+          生产环境不支持在线修改配置。请通过 Railway 环境变量或 `server/config.json` 管理。
+        </div>
+      )}
+
       <KeywordManager
         keywords={config.keywords}
         onChange={(keywords) => handleSave({ keywords })}
+        disabled={isProd}
       />
 
       <fieldset className={styles['config-fieldset']}>
@@ -36,6 +46,7 @@ function ConfigForm() {
         <select
           value={config.matchMode}
           onChange={(e) => handleSave({ matchMode: e.target.value as AppConfig['matchMode'] })}
+          disabled={isProd}
         >
           <option value="any">任一命中</option>
           <option value="all">全部命中</option>
@@ -53,6 +64,7 @@ function ConfigForm() {
               onChange={(e) =>
                 handleSave({ sources: { ...config.sources, [src]: e.target.checked } })
               }
+              disabled={isProd}
             />
             {{ weibo: '微博', zhihu: '知乎', bilibili: 'B站' }[src]}
           </label>
@@ -64,6 +76,7 @@ function ConfigForm() {
         <select
           value={config.topN}
           onChange={(e) => handleSave({ topN: Number(e.target.value) as 10 | 20 | 30 })}
+          disabled={isProd}
         >
           <option value={10}>10 条/平台</option>
           <option value={20}>20 条/平台</option>
@@ -76,6 +89,7 @@ function ConfigForm() {
         <select
           value={config.refreshMode}
           onChange={(e) => handleSave({ refreshMode: e.target.value as AppConfig['refreshMode'] })}
+          disabled={isProd}
         >
           <option value="manual">仅手动刷新</option>
           <option value="scheduled">仅定时刷新</option>
