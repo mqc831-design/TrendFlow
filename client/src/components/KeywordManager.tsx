@@ -4,10 +4,9 @@ import styles from './KeywordManager.module.css';
 interface KeywordManagerProps {
   keywords: string[];
   onChange: (keywords: string[]) => void;
-  disabled?: boolean;
 }
 
-function KeywordManager({ keywords, onChange, disabled }: KeywordManagerProps) {
+function KeywordManager({ keywords, onChange }: KeywordManagerProps) {
   const [input, setInput] = useState('');
 
   const addKeyword = () => {
@@ -32,15 +31,14 @@ function KeywordManager({ keywords, onChange, disabled }: KeywordManagerProps) {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addKeyword())}
           placeholder="输入关键字后按回车添加"
-          disabled={disabled}
         />
-        <button type="button" onClick={addKeyword} disabled={disabled}>添加</button>
+        <button type="button" onClick={addKeyword}>添加</button>
       </div>
       <div className={styles['keyword-tags']}>
         {keywords.map((kw) => (
           <span key={kw} className={styles['keyword-tag']}>
             {kw}
-            <button type="button" onClick={() => removeKeyword(kw)} disabled={disabled}>×</button>
+            <button type="button" onClick={() => removeKeyword(kw)}>×</button>
           </span>
         ))}
       </div>
